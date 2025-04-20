@@ -1,0 +1,13 @@
+.grid-container_8 {
+    grid-template-columns: repeat(8, 1fr); /* 每行8列 */
+}    
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.data-table td {
+    text-align: center;
+    vertical-align: middle;
+    width: 12.5%; /* 100% / 8列 */
+}

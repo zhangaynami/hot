@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Data Display</title>
+    <link href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./static/common.css" rel="stylesheet"> 
+    <script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid p-4 bg-dark text-light text-left">热点量化</div>
+    <div class="container-sm" style="background-color: rgb(238, 238, 238);">
+        <div class="container p-3"></div>
+        <div class="container">           
+            <h5>同花顺热股</h5>
+            <table class="data-table">
+                {% for row in data_thsrgs|batch(8) %}
+                    <tr>
+                        {% for item in row %}
+                            <td style="background-color: {{ '#FA7070' if item['涨跌幅']|float > 0 else '#99FF99'}};">
+                                <div style="font-size: 16px;">{{ item['股票名称'] }}</div>
+                                <div style="font-size: 14px;">{{ item['涨跌幅'] }}</div>
+                                <div style="font-size: 10px;">{{ item['概念标签'] }}</div>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container p-3"></div>
+        <div class="container">           
+            <h5>东方财富热股</h5>
+            <table class="data-table">
+                {% for row in data_dfcfrgs|batch(8) %}
+                    <tr>
+                        {% for item in row %}
+                            <td style="background-color: {{ '#FA7070' if item['涨跌幅']|float > 0 else '#99FF99' }};">
+                                <div style="font-size: 16px;">{{ item['股票名称'] }}</div>
+                                <div style="font-size: 14px;">{{ item['涨跌幅'] }}</div>
+                                <div style="font-size: 10px;">{{ item['概念'] }}</div>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container p-3"></div>
+        <div class="container">
+            <h5>淘股吧热股</h5>
+            <table class="data-table">
+                {% for row in tgbrgs|batch(8) %}
+                    <tr>
+                        {% for item in row %}
+                            <td>
+                                <div style="font-size: 16px;">{{ item['股票名称'] }}</div>
+                                <div style="font-size: 14px;">{{ item['详情'] }}</div>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container p-3"></div>
+        <div class="container">
+            <h5>雪球热股</h5>
+            <table class="data-table">
+                {% for row in xqrgs|batch(8) %}
+                    <tr>
+                        {% for item in row %}
+                            <td  style="background-color: {{ '#FA7070' if item['涨跌幅']|float > 0 else '#99FF99' }};">
+                                <div style="font-size: 16px;">{{ item['股票名称'] }}</div>
+                                <div style="font-size: 14px;">{{ item['涨跌幅'] }}</div>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+
+    </div>
+    
+
+</body>
+</html>
